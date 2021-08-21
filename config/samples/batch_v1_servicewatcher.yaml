@@ -1,0 +1,7 @@
+apiVersion: batch.operator.jubril.me/v1
+kind: ServiceWatcher
+metadata:
+  name: servicewatcher-sample
+spec:
+  # Add fields here
+  foo: bar

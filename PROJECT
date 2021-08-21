@@ -1,0 +1,16 @@
+domain: operator.jubril.me
+layout:
+- go.kubebuilder.io/v3
+projectName: kube-operator
+repo: github.com/s1ntaxe770r/discord-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: operator.jubril.me
+  group: batch
+  kind: ServiceWatcher
+  path: github.com/s1ntaxe770r/discord-operator/api/v1
+  version: v1
+version: "3"

@@ -1,0 +1,20 @@
+# permissions for end users to view servicewatchers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: servicewatcher-viewer-role
+rules:
+- apiGroups:
+  - batch.operator.jubril.me
+  resources:
+  - servicewatchers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch.operator.jubril.me
+  resources:
+  - servicewatchers/status
+  verbs:
+  - get
