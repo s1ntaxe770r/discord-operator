@@ -20,11 +20,10 @@ import (
 	"context"
 
 	"github.com/go-logr/logr"
+	batchv1 "github.com/s1ntaxe770r/discord-operator/api/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-
-	batchv1 "github.com/s1ntaxe770r/discord-operator/api/v1"
 )
 
 // ServiceWatcherReconciler reconciles a ServiceWatcher object
@@ -48,13 +47,15 @@ type ServiceWatcherReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.8.3/pkg/reconcile
 func (r *ServiceWatcherReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	var service batchv1.ServiceWatcher
 	_ = r.Log.WithValues("ServiceWatcher", req.NamespacedName)
-	if err := r.Get(ctx, req.NamespacedName, &service); err != nil {
+	watcher := &batchv1.ServiceWatcher{}
+
+	if err := r.Get(ctx, req.NamespacedName, watcher); err != nil {
 		r.Log.Error(err, "error fetching service watcher")
 		return ctrl.Result{}, err
 	}
 	return ctrl.Result{}, nil
+
 }
 
 // SetupWithManager sets up the controller with the Manager.
