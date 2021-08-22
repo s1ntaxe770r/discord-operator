@@ -28,7 +28,8 @@ import (
 type ServiceWatcherSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	ServiceName string `json:"servicename,omitempty"`
+	ServiceName      string `json:"servicename,omitempty"`
+	ServiceNamespace string `json:"servicenamespace"`
 }
 
 // ServiceWatcherStatus defines the observed state of ServiceWatcher
